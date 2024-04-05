@@ -1,4 +1,4 @@
-FROM --platform=quay.io/projectquay/golang:1.20 as builder
+FROM quay.io/projectquay/golang:1.20 as builder
 ARG os=linux
 ENV TARGETOS=${os}
 
