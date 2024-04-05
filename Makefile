@@ -58,7 +58,7 @@ push:
 	docker push ${REGESTRY}/${APP}:${VERSION}-${TARGETARCH}
 
 clean:
-	rm -rf new-poject
+	docker rmi ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
 
 clean_arm:
 	docker rmi ${REGISTRY}/${APP}:${VERSION}-arm64
