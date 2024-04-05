@@ -1,11 +1,11 @@
 APP=$(shell basename $(shell git remote get-url origin))
-REGESTRY=YashmaDon
+REGESTRY=yashmadon
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 TARGETOS=linux # linux darwin windows
 TARGETARCH=amd64 # amd64
 
 define code_builder
-	CGO_ENABLED=0 GOOS=$1 GOARCH=$2 go build -v -o new-poject -ldflags "-X="github.com/YashmaDon/new-poject/cmd.appVersion=${VERSION}
+	CGO_ENABLED=0 GOOS=$1 GOARCH=$2 go build -v -o new-poject -ldflags "-X="github.com/yashmadon/new-poject/cmd.appVersion=${VERSION}
 endef
 
 define image_builder
@@ -25,7 +25,7 @@ get:
 	go get
 
 build: format get
-	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=$${TARGETARCH} go build -v -o new-poject -ldflags "-X="github.com/YashmaDon/new-poject/cmd.appVersion=${VERSION}
+	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=$${TARGETARCH} go build -v -o new-poject -ldflags "-X="github.com/yashmadon/new-poject/cmd.appVersion=${VERSION}
 
 linux: format get
 	$(call code_builder,linux,amd64)
