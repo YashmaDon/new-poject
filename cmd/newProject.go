@@ -20,9 +20,9 @@ var (
 
 // newProjectCmd represents the newProject command
 var newProjectCmd = &cobra.Command{
-	Use:   "newProject",
+	Use:     "newProject",
 	Aliases: []string{"Start"},
-	Short: "A brief description of your command",
+	Short:   "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
