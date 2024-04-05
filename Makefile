@@ -58,4 +58,4 @@ push:
 	docker push ${REGESTRY}/${APP}:${VERSION}-${TARGETARCH}
 
 clean:
-	docker rmi ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+	docker rmi ${REGESTRY}/${APP}:${VERSION}-${TARGETARCH}
