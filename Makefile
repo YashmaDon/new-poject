@@ -25,7 +25,7 @@ get:
 	go get
 
 build: format get
-	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${shell dpkg --print-architecture} go build -v -o new-poject -ldflags "-X="github.com/YashmaDon/new-poject/cmd.appVersion=${VERSION}
+	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=$${TARGETARCH} go build -v -o new-poject -ldflags "-X="github.com/YashmaDon/new-poject/cmd.appVersion=${VERSION}
 
 linux: format get
 	$(call code_builder,linux,amd64)
