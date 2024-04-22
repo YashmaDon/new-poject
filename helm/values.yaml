@@ -6,9 +6,8 @@ replicaCount: 1
 
 image:
   repository: yashmadon
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
   tag: "v1.1.1-6f21dff-amd64"
+  arch: amd64
 
 secret:
   name: "new-poject"
