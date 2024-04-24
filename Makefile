@@ -26,4 +26,4 @@ push:
 	docker push ${REGESTRY}/${APP}:${VERSION}-${TARGETARCH}
 
 clean:
-	rm -rf kbot
+	rm -rf new-poject
