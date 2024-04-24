@@ -1,16 +1,8 @@
 APP=$(shell basename $(shell git remote get-url origin))
-REGESTRY=yashmadon
+REGESTRY := ghcr.io/vit-um
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
-TARGETOS=linux # linux darwin windows
-TARGETARCH=amd64 # amd64
-
-define code_builder
-	CGO_ENABLED=0 GOOS=$1 GOARCH=$2 go build -v -o new-poject -ldflags "-X="github.com/yashmadon/new-poject/cmd.appVersion=${VERSION}
-endef
-
-define image_builder
-	docker build . --target $1 -t ${REGISTRY}/${APP}:${VERSION}-$2 --build-arg os=$1 --build-arg arch=$2
-endef
+TARGETOS=linux
+TARGETARCH=amd64
 
 format:
 	gofmt -s -w ./
@@ -25,37 +17,13 @@ get:
 	go get
 
 build: format get
-	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=$${TARGETARCH} go build -v -o new-poject -ldflags "-X="github.com/yashmadon/new-poject/cmd.appVersion=${VERSION}
-
-linux: format get
-	$(call code_builder,linux,amd64)
-
-linux_arm: format get
-	$(call code_builder,linux,amd64)
-
-macos: format get
-	$(call code_builder,darwin,amd64)
-
-windows: format get
-	$(call code_builder,windows,amd64)
+	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${shell dpkg --print-architecture} go build -v -o kbot -ldflags "-X="github.com/YashmaDon/kbot/cmd.appVersion=${VERSION}
 
 image:
 	docker build . -t ${REGESTRY}/${APP}:${VERSION}-${TARGETARCH}
-
-image_linux:
-	$(call image_builder,linux,amd64)
-
-image_linux_arm:
-	$(call image_builder,linux_arm,amd64)
-
-image_macos:
-	@echo "nope"
-
-image_windows:
-	$(call image_builder,windows,amd64)
 
 push:
 	docker push ${REGESTRY}/${APP}:${VERSION}-${TARGETARCH}
 
 clean:
-	docker rmi ${REGESTRY}/${APP}:${VERSION}-${TARGETARCH}
+	rm -rf kbot
