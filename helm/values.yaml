@@ -5,9 +5,11 @@
 replicaCount: 1
 
 image:
-  repository: yashmadon
+  registry: ghrc.io
+  repository: yashmadon/new-poject
   tag: "1.3.0-cf02bfb-amd64"
   arch: amd64
+  os: linux
 # Додатково визначте секцію для токену TELE_TOKEN
 secret:
   name: "kbot"
