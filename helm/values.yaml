@@ -5,7 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: umanetsvitaliy
+  registry: ghrc.io
+  repository: yashmadon/new-poject
   tag: "v1.2.0-660ae95"
   arch: amd64
 # Додатково визначте секцію для токену TELE_TOKEN
