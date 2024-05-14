@@ -26,4 +26,4 @@ push:
 	docker push ${REGESTRY}/${APP}:${VERSION}-${TARGETARCH}
 
 clean:
-	rm -rf new-poject
+	docker rmi ${REGISTRY}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
