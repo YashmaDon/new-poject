@@ -15,8 +15,6 @@ secret:
   name: "kbot"
   env: "TELE_TOKEN"
   key: "token"
-securityContext:
-  privileged: true
 
 imagePullSecrets: []
 nameOverride: ""
@@ -38,14 +36,6 @@ podLabels: {}
 
 podSecurityContext: {}
   # fsGroup: 2000
-
-securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
 
 service:
   type: ClusterIP
